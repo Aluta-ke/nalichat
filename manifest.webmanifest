@@ -1,7 +1,7 @@
 {
-  "name": "FlitChat Site",
-  "short_name": "FlitChat",
-  "description": "FlitChat App — Get paid to chat with foreigners. Install the FlitChat Site App for fast access.",
+  "name": "Nalichat",
+  "short_name": "Nalichat",
+  "description": "Nalichat App — Get paid to chat with foreigners. Install the Nalichat App for fast access.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

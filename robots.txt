@@ -6,5 +6,5 @@ Disallow: /dashboard
 # IndexNow
 # Key file: /a74ecba8ce6ac217564cdad2e9d5602d.txt
 
-Sitemap: https://flitchat.site/sitemap.xml
-Host: flitchat.site
+Sitemap: https://nalichat.site/sitemap.xml
+Host: nalichat.site
