@@ -1,0 +1,201 @@
+/* Floating PWA install bubble — does not affect page layout */
+.nc-pwa {
+  position: fixed;
+  top: 50%;
+  right: max(12px, env(safe-area-inset-right, 0px));
+  left: auto;
+  bottom: auto;
+  transform: translateY(-50%);
+  z-index: 80;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.nc-pwa[hidden] {
+  display: none !important;
+}
+
+.nc-pwa-card {
+  pointer-events: auto;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 168px;
+  height: 168px;
+  padding: 1rem 0.75rem 0.85rem;
+  overflow: visible;
+  text-align: center;
+  background: radial-gradient(circle at 35% 28%, #1aa39a 0%, #0e7c7b 68%, #0a6463 100%);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  box-shadow:
+    0 14px 32px rgba(15, 23, 42, 0.16),
+    0 0 0 1px rgba(14, 124, 123, 0.12),
+    0 0 24px rgba(14, 124, 123, 0.12);
+  animation: nc-pwa-in 0.38s ease-out, nc-pwa-float 3.2s ease-in-out 0.38s infinite;
+}
+
+.nc-pwa-card::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 58%;
+  width: 18px;
+  height: 18px;
+  background: #0e7c7b;
+  border-radius: 4px 0 8px 0;
+  box-shadow: -3px 4px 10px rgba(15, 23, 42, 0.08);
+  transform: rotate(42deg);
+}
+
+.nc-pwa-card::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 28px;
+  width: 42px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+}
+
+.nc-pwa-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nc-pwa-close:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.nc-pwa-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(14, 124, 123, 0.22);
+}
+
+.nc-pwa-title {
+  margin: 0.35rem 0 0;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.nc-pwa-sub {
+  margin: 0.12rem 0 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.nc-pwa-ios {
+  margin: 0.22rem 0 0;
+  max-width: 8.5rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.52rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.nc-pwa-ios[hidden] {
+  display: none !important;
+}
+
+.nc-pwa-install {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.75rem;
+  margin-top: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border: 0;
+  border-radius: 999px;
+  background: #ff6b5b;
+  color: #ffffff;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 8px 18px -8px rgba(255, 107, 91, 0.7);
+}
+
+.nc-pwa-install:hover {
+  transform: scale(1.03);
+}
+
+.nc-pwa-install:active {
+  transform: scale(0.97);
+}
+
+@keyframes nc-pwa-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes nc-pwa-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 420px) {
+  .nc-pwa {
+    right: max(8px, env(safe-area-inset-right, 0px));
+  }
+
+  .nc-pwa-card {
+    width: 148px;
+    height: 148px;
+    padding: 0.8rem 0.55rem 0.65rem;
+  }
+
+  .nc-pwa-logo {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nc-pwa-card {
+    animation: none;
+  }
+}
